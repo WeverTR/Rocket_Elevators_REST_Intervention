@@ -1,9 +1,4 @@
-class Lead < ApplicationRecord
-    after_create :send_email1
-    def send_email1
-        send_email(self)
-    end
-    # using SendGrid's Ruby Library
+# using SendGrid's Ruby Library
 # https://github.com/sendgrid/sendgrid-ruby
 require 'sendgrid-ruby'
 include SendGrid
@@ -24,9 +19,8 @@ def send_email(lead)
 
     sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
     response = sg.client.mail._('send').post(request_body: mail.to_json)
-    # puts response.status_code
-    # puts response.body
-    # puts response.headers
-    puts "email sent"
-end
+    puts response.status_code
+    puts response.body
+    puts response.headers
+    puts "wow"
 end

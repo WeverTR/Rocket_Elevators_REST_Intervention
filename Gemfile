@@ -99,3 +99,11 @@ gem 'retriable'
 gem 'hurley'
 gem 'multi_json'
 gem 'google_maps_service'
+gem 'dropbox_api'
+
+gem 'sendgrid-ruby'
+
+
+gem 'ibm_watson'
+
+
