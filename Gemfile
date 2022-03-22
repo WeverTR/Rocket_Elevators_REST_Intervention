@@ -92,3 +92,10 @@ gem 'secondbase'
 gem 'pg'
  
 gem 'blazer', '~> 2.5'
+
+gem 'figaro'
+
+gem 'retriable'
+gem 'hurley'
+gem 'multi_json'
+gem 'google_maps_service'

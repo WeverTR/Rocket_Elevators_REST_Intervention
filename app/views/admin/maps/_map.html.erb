@@ -1,0 +1,62 @@
+
+<html>
+  <head>
+    <style>
+      .map {
+        height: 80vh;
+        width: 90vw;
+        margin: 0 auto;
+      }
+    </style>
+    <script>
+    // Initialize and add the map
+  function initMap() {
+  // The location of Uluru
+  const uluru = { lat: -25.344, lng: 131.036 };
+  // The map, centered at Uluru
+  const map = new google.maps.Map(document.querySelector(".map"), {
+    zoom: 4,
+    center:  { lat: -33.9, lng: 151.2 },
+  });
+
+  // The marker, positioned at Uluru
+  // const marker = new google.maps.Marker({
+  //   position: uluru,
+  //   map: map,
+  // });
+  setMarkers(map);
+  }
+
+  const coords = [
+  ["Bondi Beach", -33.890542, 151.274856, 4],
+  ["Coogee Beach", -33.923036, 151.259052, 5],
+  ["Cronulla Beach", -34.028249, 151.157507, 3],
+  ["Manly Beach", -33.80010128657071, 151.28747820854187, 2],
+  ["Maroubra Beach", -33.950198, 151.259302, 1],
+];
+
+  function setMarkers(map) {
+    for (let i = 0; i < coords.length; i++) {
+    const coordinates = coords[i];
+
+    new google.maps.Marker({
+      position: { lat: coordinates[1], lng: coordinates[2] },
+      map,
+    });
+    }
+  }
+    
+
+  </script>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <!--The div element for the map -->
+    <div class="map"></div>
+    
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["Maps_API_Key"] %>&callback=initMap&v=weekly" async></script>
+  </body>
+</html>
+ 
