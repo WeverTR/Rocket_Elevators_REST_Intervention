@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   # get '/admin/graph', to: redirect('/blazer')
   get '/login', to: 'pages#index'
   get '/(*url)', to: redirect('/404')
-
   # mount Blazer::Engine, at: "blazer"
 
 
