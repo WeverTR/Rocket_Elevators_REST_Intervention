@@ -92,3 +92,8 @@ gem 'secondbase'
 gem 'pg'
  
 gem 'blazer', '~> 2.5'
+
+
+gem 'ibm_watson'
+
+gem 'figaro'
