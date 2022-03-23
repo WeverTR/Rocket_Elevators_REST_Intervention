@@ -70,6 +70,9 @@ counter = 0;
         postal_code: thisaddress['postalCode'],
         country: "USA",
         notes:  Faker::Lorem.paragraph,
+        # coordinates: thisaddress['coordinates']
+        lat: thisaddress['coordinates']['lat'],
+        lng: thisaddress['coordinates']['lng']
     )
     counter += 1
 end

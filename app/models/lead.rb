@@ -1,5 +1,5 @@
 class Lead < ApplicationRecord
-    after_create :send_email1
+    # after_create :send_email1
     def send_email1
         send_email(self)
     end
