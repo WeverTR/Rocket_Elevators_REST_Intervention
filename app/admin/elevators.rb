@@ -21,7 +21,6 @@ ActiveAdmin.register Elevator do
       end
    end
     
-       # webhook https://hooks.slack.com/services/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
     #
   # or
   #
