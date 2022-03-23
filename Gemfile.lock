@@ -152,6 +152,8 @@ GEM
     faker (2.20.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
     formtastic (4.0.0)
@@ -301,6 +303,7 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
+    slack-notifier (2.4.0)
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -363,6 +366,7 @@ DEPENDENCIES
   draper
   ed25519 (>= 1.2, < 2.0)
   faker (~> 2.20, >= 2.20.0)
+  figaro
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
@@ -377,6 +381,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   secondbase
   selenium-webdriver
+  slack-notifier (~> 2.4)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
