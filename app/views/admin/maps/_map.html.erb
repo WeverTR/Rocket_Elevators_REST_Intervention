@@ -16,15 +16,19 @@
 
     <% Building.all.each do |building|
         columnsNum = 0 
+        elevatorsNum = 0
         building.batteries.all.each do |b|
           columnsNum += b.columns.count
+            b.columns.all.each do |c|
+              elevatorsNum += c.elevators.count
+          end
         end %>
 
       street = "<%= building.address.number_street %>"
       name = "<%= building.customer.company_name %>"
       batteries = "<%= building.batteries.count %>"
       columns = "<%= columnsNum  %>"
-      elevators = <%= 9 %>
+      elevators = <%= elevatorsNum %>
       tech_name = "<%= building.tech_contact_name %>"
 
       coords.push([
