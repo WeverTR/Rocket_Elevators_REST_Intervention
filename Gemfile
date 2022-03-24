@@ -102,9 +102,9 @@ gem 'google_maps_service'
 gem 'dropbox_api'
 
 gem 'sendgrid-ruby'
+gem 'twilio-ruby'
 
-
-gem 'ibm_watson'
+#gem 'ibm_watson'
 
 
 gem 'slack-notifier', '~> 2.4'
