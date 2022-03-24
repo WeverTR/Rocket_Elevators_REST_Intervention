@@ -4,6 +4,7 @@ class Customer < ApplicationRecord
     belongs_to :user
     #when new customer is created
     after_create :upload_files
+    require 'dropbox_api'
         
     def upload_files
         # A random person would come to the site and fill out the contact form, thus creating a lead
@@ -17,9 +18,9 @@ class Customer < ApplicationRecord
             #if lead email matches a customer email
             if lead.email == self.company_contact_email
                 #create directory
-                client.mkdir("#{self.customer}") 
+                client.create_folder("/#{lead.contact_name}")
                 #upload
-                client.upload("/#{self.customer}", lead)
+                client.upload("/#{lead.contact_name}", "/#{lead.attached_file}")            
             end 
         end
     end
