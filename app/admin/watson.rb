@@ -1,5 +1,5 @@
-ActiveAdmin.register_page "Watson" do
+ActiveAdmin.register_page "watson" do
     content do
-    render partial: 'watson'
-    end
+        render partial: 'watson'
+      end
 end

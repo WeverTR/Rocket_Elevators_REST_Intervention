@@ -173,6 +173,9 @@ GEM
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
     formtastic_i18n (0.7.0)
+    freshdesk (0.2)
+      nokogiri
+      rest-client
     globalid (1.0.0)
       activesupport (>= 5.0)
     google_maps_service (0.4.2)
@@ -187,6 +190,7 @@ GEM
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       http-parser (~> 1.2.0)
+    http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
@@ -248,6 +252,9 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mime-types (3.4.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.15.0)
@@ -258,6 +265,7 @@ GEM
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-ssh (6.1.0)
+    netrc (0.11.0)
     nio4r (2.5.8)
     nokogiri (1.13.3)
       mini_portile2 (~> 2.8.0)
@@ -324,6 +332,11 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     retriable (2.1.0)
+    rest-client (2.1.0)
+      http-accept (>= 1.7.0, < 2.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rexml (3.2.5)
     ruby2_keywords (0.0.5)
     ruby_dep (1.5.0)
@@ -430,6 +443,7 @@ DEPENDENCIES
   font-awesome-rails
   google_maps_service
   hurley
+  freshdesk
   ibm_watson
   jbuilder (~> 2.5)
   jquery-rails
