@@ -99,4 +99,4 @@ gem 'sendgrid-ruby'
 
 gem 'ibm_watson'
 
-
+gem "freshdesk"
