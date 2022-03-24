@@ -107,3 +107,5 @@ gem 'sendgrid-ruby'
 gem 'ibm_watson'
 
 
+gem 'slack-notifier', '~> 2.4'
+
