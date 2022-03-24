@@ -95,8 +95,8 @@ gem 'blazer', '~> 2.5'
 gem 'dropbox_api'
 gem 'figaro'
 gem 'sendgrid-ruby'
+gem 'twilio-ruby'
 
-
-gem 'ibm_watson'
+#gem 'ibm_watson'
 
 
