@@ -11,9 +11,35 @@
     <script>
     let coords = [];
 
-    <% Address.all.each do |row| %>
-      coords.push(<%= [row.id, row.lat.to_f, row.lng.to_f] %>)
-      // <% puts [row.lat, row.lng] %>
+    let street, name, batteries, columns, elevators, tech_name;
+  
+
+    <% Building.all.each do |building|
+        columnsNum = 0 
+        building.batteries.all.each do |b|
+          columnsNum += b.columns.count
+        end %>
+
+      street = "<%= building.address.number_street %>"
+      name = "<%= building.customer.company_name %>"
+      batteries = "<%= building.batteries.count %>"
+      columns = "<%= columnsNum  %>"
+      elevators = <%= 9 %>
+      tech_name = "<%= building.tech_contact_name %>"
+
+      coords.push([
+        <%= building.address.lat.to_f %>,
+        <%= building.address.lng.to_f %>,
+        {
+          street,
+          name,
+          batteries,
+          columns,
+          elevators,
+          tech_name
+        }
+      ])
+
     <% end %>
 
     // Initialize and add the map
@@ -24,9 +50,6 @@
       center:  { lat: 39.8, lng: -98.5 },
     });
 
-
-    
-
     setMarkers(map);
     
     //list of coordinates for addresses 
@@ -36,35 +59,6 @@
     // create a new sub array using addresss ID, lat, lng
     // add subarray to coords (push append ect)
 
-    let contentString = 
-      '<div id="content">' +
-      '<div id="siteNotice">' +
-      "</div>" +
-      '<h1 id="firstHeading" class="firstHeading">Uluru</h1>' +
-      '<div id="bodyContent">' +
-      "<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large " +
-      "sandstone rock formation in the southern part of the " +
-      "Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) " +
-      "south west of the nearest large town, Alice Springs; 450&#160;km " +
-      "(280&#160;mi) by road. Kata Tjuta and Uluru are the two major " +
-      "features of the Uluru - Kata Tjuta National Park. Uluru is " +
-      "sacred to the Pitjantjatjara and Yankunytjatjara, the " +
-      "Aboriginal people of the area. It has many springs, waterholes, " +
-      "rock caves and ancient paintings. Uluru is listed as a World " +
-      "Heritage Site.</p>" +
-      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">' +
-      "https://en.wikipedia.org/w/index.php?title=Uluru</a> " +
-      "(last visited June 22, 2009).</p>" +
-      "</div>" +
-      "</div>";
-
-    const infowindow = new google.maps.InfoWindow({
-      content: contentString,
-    });
-    // let marker;
-
-
-    
     
     function setMarkers(map) {
       console.log(coords)
@@ -73,30 +67,36 @@
         const coordinates = coords[i];
 
         let marker = new google.maps.Marker({
-          position: { lat: coordinates[1], lng: coordinates[2] },
+          position: { lat: coordinates[0], lng: coordinates[1] },
           map,
         });
-
-        // This code creates the info window content
-        <% building = Building.find_by(:address_id => coordinates[0])%>
-        let contact_name = <%= building.customer.contact_name%>
-
+    
         // This code add the info window content to each marker
-        let content = `
-          <p>This is Address ${i}</p>
-          <p>Customer Contact: ${contact_name}</p>
-        `;
+        let _info = coordinates[2];
+        let content = `<p>Location of the Building: ${_info.street}<p>
+                       <p>Company/Contact: ${_info.name}<p>
+                       <p>Number of Batteries: ${_info.batteries}<p>
+                       <p>Number of Columns: ${_info.columns}<p>
+                       <p>Number of Elevators: ${_info.elevators}<p>
+                       <p>Technical Contact: ${_info.tech_name}<p>`
+                      
 
         const info = new google.maps.InfoWindow({
           content: content,
         });
 
-        marker.addListener("click", () => {
+        marker.addListener("mouseover", () => {
           info.open({
             anchor: marker,
             map,
             shouldFocus: false,
           });
+        });
+        marker.addListener('mouseout', ()=>{
+          info.close({
+            map,
+            shouldFocus: false
+          })
         });
       }
     }
