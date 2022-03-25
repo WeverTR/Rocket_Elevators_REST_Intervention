@@ -25,16 +25,6 @@ The gem needed for this API is
 	gem "freshdesk"
 Put the gem inside your gemfile, then run
 	bundle install
-==================FRESHDESK===================
-To make a ticket with freshdesk, you have to make sure that you have an account with an API key.
-You can find the api key by going to top right> profile settings> Your API key
-After copying your API key, head over to Developers.Freshdesk, and login.
-Follow the documentation on how to impliment it into your code, and make sure to have your API key private, as github WILL take it down.
-Go into your leads controller inside your admin/models folder, and configure your code to match what is needed to be submitted as a support ticket/feature request.
-The gem needed for this API is
-	gem "freshdesk"
-Put the gem inside your gemfile, then run
-	bundle install
 
 ==================FRESHDESK===================
 To make a ticket with freshdesk, you have to make sure that you have an account with an API key.
@@ -46,7 +36,7 @@ The gem needed for this API is
 	gem "freshdesk"
 Put the gem inside your gemfile, then run
 	bundle install
-**leads
+
 api_key = ENV['FRESHDESK_API']
         # Your freshdesk domain
         # freshdesk_domain = 'rocketelevators.freshdesk.com/helpdesk/tickets'
@@ -78,7 +68,7 @@ api_key = ENV['FRESHDESK_API']
         freshdesk_api_path = 'api/v2/tickets'
         freshdesk_api_url  = "https://#{freshdesk_domain}.freshdesk.com/#{freshdesk_api_path}"
         site = RestClient::Resource.new(freshdesk_api_url, api_key)
-**quotes
+quotes
 As for the "contact us" form for a support ticket, impliment the following code into your quotes controller.
             api_key = ENV['FRESHDESK_API']
               if @quote.contact_name == nil
@@ -95,6 +85,8 @@ As for the "contact us" form for a support ticket, impliment the following code 
                 "description": @quote.contact blah blah blah
             }.to_json
 and thats all to it!
+
+
 ================AWS POLLY==================
 The gem needed for this API is
 	gem "aws-sdk"
