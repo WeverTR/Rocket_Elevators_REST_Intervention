@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   get '/quote', to: 'pages#quote'
   get '/index', to: 'pages#index'
   # get '/admin/graph', to: redirect('/blazer')
-  match '/polly', to: 'polly#speak', via: :get
+  get '/polly', to: 'polly#speak', as: :polly
+  # get '/admin/polly' => 'polly#speak', :as => 'speak'
+  # get 'polly#speak' to: redirect('/polly')
   get '/login', to: 'pages#index'
   get '/(*url)', to: redirect('/404')
 

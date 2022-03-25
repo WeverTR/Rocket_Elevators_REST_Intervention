@@ -13,6 +13,7 @@
 
 
 
+<%= button_to "Generate", polly_path, :method => "get" %>
 
 
 
@@ -22,8 +23,8 @@
 
 
 
-
-<%= audio_tag("greetings.mp3", controls: true)%> 
+<%= audio_tag("myfile.mp3", controls: true)%> 
+<%# <%= asset_path("myfile.mp3", controls: true)%>  
 <%# <%= audio_tag ("greetings.mp3"), id: "greetings-audio" %> 
 
  <%# <div>

@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
     belongs_to :address 
     belongs_to :user
     #when new customer is created
-    after_create :upload_files
+    # after_create :upload_files
         
     def upload_files
         # A random person would come to the site and fill out the contact form, thus creating a lead
