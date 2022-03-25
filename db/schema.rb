@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_18_222426) do
+ActiveRecord::Schema.define(version: 2022_03_25_183519) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "namespace"
@@ -218,6 +218,7 @@ ActiveRecord::Schema.define(version: 2022_03_18_222426) do
     t.string "contact_request_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "filename"
   end
 
   create_table "quotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|

@@ -18,14 +18,13 @@ class Customer < ApplicationRecord
         if lead
             #if lead email matches a customer email
             if lead.email == self.company_contact_email
-
                 begin
                     client.create_folder("/#{lead.contact_name}")
                 rescue DropboxApi::Errors::FolderConflictError
                     puts "Customer already has pre-existing Dropbox folder"
                 end
                 begin
-                    client.upload("/#{lead.contact_name}", "/#{lead.attached_file}")
+                    client.upload("/" + lead.contact_name + "/" + lead.filename, lead.attached_file)
                 rescue DropboxApi::Errors::FileConflictError
                     puts "File already exists."
                 end 
