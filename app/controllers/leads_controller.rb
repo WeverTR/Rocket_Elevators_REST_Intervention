@@ -32,7 +32,7 @@ class LeadsController < ApplicationController
         freshdesk_domain = 'rocketelevators'
 
         # It could be either your user name or api_key.
-        api_key: ENV['FRESHDESK_API_KEY']
+       api_key = ENV['FRESHDESK_API']
 
         # If you have given api_key, then it should be x. If you have given user name, it should be password
         if @lead.contact_name == nil
