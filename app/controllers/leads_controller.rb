@@ -78,7 +78,7 @@ class LeadsController < ApplicationController
             "phone": @lead.phone,
             "email": @lead.email,
             "description": 
-            "The contact " + @lead.contact_name + " from company " + @lead.company_name + " can be reached at email " + @lead.email + " and at phone number  " + @lead.phone + ". " + @lead.department + " has a project named " + @lead.project_name + ". which would require contribution from Rocket Elevators. " + @lead.project_description + ". Attached Message: " + @lead.message + ". The Contact uploaded an attachment " + @lead.attached_file + ".",
+            "The contact " + @lead.contact_name + " from company " + @lead.company_name + " can be reached at email " + @lead.email + " and at phone number  " + @lead.phone + ". " + @lead.department + " has a project named " + @lead.project_name + ". which would require contribution from Rocket Elevators. " + @lead.project_description + ". Attached Message: " + @lead.message + ". The Contact uploaded an attachment.",
             "type": "Question",
             "subject": @lead.contact_name + " from " + @lead.company_name,
         }.to_json

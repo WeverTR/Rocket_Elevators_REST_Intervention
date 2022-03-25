@@ -15,7 +15,8 @@ class Elevator < ApplicationRecord
             from = '+12543235637' # Your Twilio number
             to = ENV["Abdul"] # Your mobile phone number
             
-            client.account.sms.messages.create(
+            #client.account.sms.message.create
+            client.messages.create(
                 from: from,
                 to: to,
                 body: "Elevator moment!"
