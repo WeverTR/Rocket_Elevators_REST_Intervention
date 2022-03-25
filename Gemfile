@@ -111,4 +111,4 @@ gem 'slack-notifier', '~> 2.4'
 
 gem "freshdesk"
 
-gem "recaptcha"
+gem 'invisible_captcha'
