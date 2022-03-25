@@ -99,7 +99,7 @@ class QuotesController < ApplicationController
                 "name": @quote.contact_name, 
                 "email": @quote.contact_email,
                 "description": 
-                "The contact " + @quote.contact_name + " from company " + @quote.company_name + " can be reached at email " + @quote.contact_email + " . The building type selected is " + @quote.department + ", and the service grade is " + @quote.service_grade + ". The amount of elevators is " + @quote.number_of_elevators + ". The total for installation fees is " + @quote.installation_fees + ", with the grand total price as " + @quote.final_price,
+                "The contact " + @quote.contact_name + " from company " + @quote.company_name + " can be reached at email " + @quote.contact_email + ". The building type selected is " + @quote.department + ", and the service grade is " + @quote.service_grade + ". The amount of elevators is " + @quote.elevator_amount + ". The total for installation fees is " + @quote.installation_fees + ", with the grand total price as " + @quote.final_price,
                 "type": "Feature Request",
                 "subject": @quote.contact_name + " from " + @quote.company_name,
             }.to_json

@@ -111,4 +111,9 @@ gem 'slack-notifier', '~> 2.4'
 
 gem "freshdesk"
 
+<<<<<<< HEAD
 gem 'invisible_captcha'
+=======
+
+gem 'aws-sdk'
+>>>>>>> origin/AWS-polly

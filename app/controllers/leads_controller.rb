@@ -27,13 +27,16 @@ class LeadsController < ApplicationController
     # def new
         # @lead = Lead.new
 
+        # freshdesk_api_url 
+        api_key = ENV['FRESHDESK_API']
+
 
         # Your freshdesk domain
         # freshdesk_domain = 'rocketelevators.freshdesk.com/helpdesk/tickets'
         freshdesk_domain = 'rocketelevators'
 
         # It could be either your user name or api_key.
-       api_key = ENV['FRESHDESK_API']
+        # api_key: ENV['FRESHDESK_API']
 
         # If you have given api_key, then it should be x. If you have given user name, it should be password
         if @lead.contact_name == nil
