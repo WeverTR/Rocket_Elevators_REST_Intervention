@@ -1,14 +1,8 @@
 class Lead < ApplicationRecord
     # after_create :send_email1
-<<<<<<< HEAD
     # def send_email1
     #     send_email(self)
     # end
-=======
-    def send_email1
-        send_email(self)
-    end
->>>>>>> origin/AWS-polly
     # using SendGrid's Ruby Library
 # https://github.com/sendgrid/sendgrid-ruby
 # require 'sendgrid-ruby'
