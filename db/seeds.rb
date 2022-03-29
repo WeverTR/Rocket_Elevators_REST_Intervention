@@ -142,17 +142,20 @@ puts "-- ___-- Building Table Populated with #{Building.count} records -- ___--"
 #-------Generate random batteries-------
 Building.all.each do |buildingloop|
     rand(1..3).times do
-        case rand(1..10)
+        case rand(1..11)
         when 1..9 then status = "Running"
         when 10 then status = "Not Running"
+        when 11 then status = "Intervention"
         end
+        commission = Faker::Date.between(from: 3.years.ago, to: Date.today)
+        inspection =  Faker::Date.between(from: commission, to: Date.today)
         Battery.create!(        
             building: buildingloop,
             building_type: ["Residential", "Commercial","Corporate", "Hybrid"].sample,
-            status: ["Running", "Running", "Running", "Running", "Not Running"].sample,
+            status: status,
             employee_id: Faker::Number.between(from: Employee.first.id, to: (Employee.first.id+Employee.count-1)),
-            commission_date:    Faker::Date.between(from: 3.years.ago, to: Date.today),
-            last_inspection_date:   Faker::Date.between(from: 3.years.ago, to: Date.today),
+            commission_date: commission,
+            last_inspection_date: inspection,
             certificate_of_operations:  Faker::Code.rut,
             information:    Faker::Lorem.sentence,
             notes:  Faker::Lorem.paragraph,
@@ -166,9 +169,10 @@ Battery.all.each do |batteryloop|
     if batteryloop.status == "Not Running"
         status = batteryloop.status
     else
-        case rand(1..10)
+        case rand(1..11)
         when 1..9 then status = "Running"
         when 10 then status = "Not Running"
+        when 11 then status = "Intervention"
         end
     end
     rand(1..4).times do 
@@ -190,20 +194,23 @@ Column.all.each do |columnloop|
     if columnloop.status == "Not Running"
         status = columnloop.status
     else
-        case rand(1..10)
+        case rand(1..11)
         when 1..9 then status = "Running"
         when 10 then status = "Not Running"
+        when 11 then status = "Intervention"
         end
     end
     rand(1..6).times do
+        commission = Faker::Date.between(from: Battery.find(columnloop.battery_id).commission_date, to: Date.today)
+        inspection = Faker::Date.between(from: commission, to: Date.today)
         Elevator.create!(        
             column: columnloop,
             serial_number: Faker::Number.decimal_part(digits: 7),
             model: model,
             building_type: columnloop.building_type,
             status:status,
-            commission_date:    Faker::Date.between(from: 3.years.ago, to: Date.today),
-            last_inspection_date:   Faker::Date.between(from: 3.years.ago, to: Date.today),
+            commission_date: commission,
+            last_inspection_date: inspection,
             certificate_of_inspection:  Faker::Code.rut,
             information:    Faker::Lorem.paragraph,
             notes:  Faker::Quote.yoda,    
@@ -339,3 +346,6 @@ end
 end
 
 puts "-- ___-- Quotes Table Populated with #{Quote.count} records -- ___--"
+
+
+

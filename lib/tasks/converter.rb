@@ -1,5 +1,16 @@
 require 'pg'
 require 'mysql2'
+
+
+FactQuote.delete_all
+FactElevator.delete_all
+FactContact.delete_all
+DimCustomer.delete_all
+FactIntervention.delete_all
+
+
+
+
 def move_quote
     Quote.all.each do |q|
     FactQuote.create!(
@@ -70,3 +81,113 @@ def move_elevators
 end
 move_elevators()
 puts "=== FactElevator imported ==="
+
+def move_interventions
+    Battery.all.each do |battery|
+        
+        if battery.status == "Intervention"
+            startdate = Faker::Date.between(from: (battery.commission_date), to: Date.today)
+            case rand(1..10)
+            when 1..9 then enddate = nil 
+            when 10 then enddate = Faker::Date.between(from:startdate, to: Date.today)
+            end
+            
+            if enddate == nil 
+                result = "Incomplete"
+                status = ["Pending", "InProgress", "Interrupted","Resumed"].sample
+            else 
+                result = ["Success", "Failure"].sample
+                Battery.find(battery.id).status = "Running"
+                status = "Complete"
+            end      
+            
+            FactIntervention.create!(
+                {
+                    employee_id: battery.employee_id,
+                    building_id: battery.building_id,
+                    battery_id: battery.id,
+                    column_id:  nil,
+                    elevator_id: nil,
+                    startdate: startdate,
+                    enddate: enddate,
+                    result: result,
+                    report: Faker::Lorem.paragraph,
+                    status: status,
+                }
+            )
+        end
+    end
+
+
+    Column.all.each do |column|
+        
+        if column.status == "Intervention"
+            startdate = Faker::Date.between(from: (Battery.find(column.battery_id).commission_date), to: Date.today)
+            case rand(1..10)
+            when 1..9 then enddate = nil 
+            when 10 then enddate = Faker::Date.between(from:startdate, to: Date.today)
+            end
+            
+            if enddate == nil 
+                result = "Incomplete"
+                status = ["Pending", "InProgress", "Interrupted","Resumed"].sample
+            else 
+                result = ["Success", "Failure"].sample
+                Column.find(column.id).status = "Running"
+                status = "Complete"
+                # binding.pry
+            end      
+            
+            FactIntervention.create!(
+                {
+                    employee_id: Battery.find(column.battery_id).employee_id,
+                    building_id: Battery.find(column.battery_id).building_id,
+                    battery_id: nil,
+                    column_id: column.id,
+                    elevator_id: nil,
+                    startdate: startdate,
+                    enddate: enddate,
+                    result: result,
+                    report: Faker::Lorem.paragraph,
+                    status: status,
+                }
+            )
+        end
+    end
+    Elevator.all.each do |elevator|
+        
+        if elevator.status == "Intervention"
+            startdate = Faker::Date.between(from: (elevator.commission_date), to: Date.today)
+            case rand(1..10)
+            when 1..9 then enddate = nil 
+            when 10 then enddate = Faker::Date.between(from:startdate, to: Date.today)
+            end
+            
+            if enddate == nil 
+                result = "Incomplete"
+                status = ["Pending", "InProgress", "Interrupted","Resumed"].sample
+            else 
+                result = ["Success", "Failure"].sample
+                Elevator.find(elevator.id).status = "Running"
+                status = "Complete"
+            end      
+            
+            FactIntervention.create!(
+                {
+                    employee_id: Battery.find(Column.find(elevator.column_id).battery_id).employee_id,
+                    building_id: Battery.find(Column.find(elevator.column_id).battery_id).building_id,
+                    battery_id: nil,
+                    column_id:  nil,
+                    elevator_id: elevator.id,
+                    startdate: startdate,
+                    enddate: enddate,
+                    result: result,
+                    report: Faker::Lorem.paragraph,
+                    status: status,
+                }
+            )
+        end
+    end
+end
+move_interventions()
+puts "=== FactInterventions imported ==="

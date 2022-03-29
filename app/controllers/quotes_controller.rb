@@ -32,7 +32,7 @@ class QuotesController < ApplicationController
             freshdesk_domain = 'rocketelevators'
 
             # It could be either your user name or api_key.
-            api_key: ENV['FRESHDESK_API_KEY']
+            api_key = ENV['FRESHDESK_API']
 
               if @quote.department == nil
               @quote.department = "n/a"
