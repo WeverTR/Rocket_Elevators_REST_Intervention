@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 2022_03_25_183519) do
   end
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "creation_date"
+    t.datetime "creation_date"
     t.string "company_name"
     t.string "company_contact_name"
     t.string "company_contact_phone"
@@ -217,7 +217,7 @@ ActiveRecord::Schema.define(version: 2022_03_25_183519) do
     t.string "department"
     t.text "message"
     t.binary "attached_file", limit: 16777215
-    t.string "contact_request_date"
+    t.datetime "contact_request_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "filename"
