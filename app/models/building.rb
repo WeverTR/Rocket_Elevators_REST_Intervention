@@ -3,4 +3,5 @@ class Building < ApplicationRecord
     belongs_to :address
     has_many :batteries
     belongs_to :customer
+    has_many :interventions
 end

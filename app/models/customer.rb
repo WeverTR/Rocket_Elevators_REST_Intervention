@@ -2,6 +2,7 @@ class Customer < ApplicationRecord
     has_many :buildings
     belongs_to :address 
     belongs_to :user
+    has_many :interventions
     #when new customer is created
     after_create :upload_files
     require 'dropbox_api'

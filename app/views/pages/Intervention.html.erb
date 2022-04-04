@@ -1,0 +1,262 @@
+<head>
+	<title>Rocket Elevators | Get a Quote!</title>
+</head>
+
+		<!-- wrapper -->
+		<div id="wrapper">
+
+
+
+			<!-- 
+				AVAILABLE HEADER CLASSES
+				Default nav height: 96px
+				.header-md 		= 70px nav height
+				.header-sm 		= 60px nav height
+				.b-0 		= remove bottom border (only with transparent use)
+				.sticky			= sticky header
+				.static			= static header
+				.dark			= dark header
+				.bottom			= header on bottom
+				
+				shadow-before-1 = shadow 1 header top
+				shadow-after-1 	= shadow 1 header bottom
+				shadow-before-2 = shadow 2 header top
+				shadow-after-2 	= shadow 2 header bottom
+				shadow-before-3 = shadow 3 header top
+				shadow-after-3 	= shadow 3 header bottom
+				.clearfix		= required for mobile menu, do not remove!
+			-->
+			<div id="header" class="navbar-toggleable-md clearfix transparent sticky dark disable-uppercase">
+
+				<!-- TOP NAV -->
+				<header id="topNav">
+					<div class="container">
+
+						<!-- Mobile Menu Button -->
+						<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+							<i class="fa fa-bars"></i>
+						</button>
+
+						<!-- Logo -->
+						<a class="logo float-left scrollTo" href="/index">
+							<%= image_tag 'R2.png', alt:"R2" %>
+						</a>
+
+						<!-- 
+							Top Nav 
+							
+							AVAILABLE CLASSES:
+							submenu-dark = dark sub menu
+						-->
+						<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+							<nav class="nav-main">
+
+								<!-- 
+									.nav-onepage
+									Required for onepage navigation links
+									
+									Add .external for an external link!
+								-->
+								<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+									<li class="active"><!-- HOME -->
+										<a href="index.html" id="home-nav">
+											HOME
+										</a>
+									</li>
+									<li><!-- SERVICES -->
+										<a href="index.html#services" id="services-nav">
+											SERVICES
+										</a>
+									</li>
+									<li><!-- WORK -->
+										<a href="index.html#portfolio" id="portfolio-nav">
+											PORTFOLIO
+										</a>
+									</li>
+									<li><!-- NEWS -->
+										<a href="index.html#news" id="news-nav">
+											NEWS
+										</a>
+									</li>
+									<li><!-- CLIENTS -->
+										<a href="index.html#clients" id="clients-nav">
+											CLIENTS
+										</a>
+									</li>
+									<li><!-- CONTACT -->
+										<a href="index.html#contact" id="contact-nav">
+											CONTACT
+										</a>
+									</li>
+                                    	<% if user_signed_in? %>
+										<li><!-- BACK OFFICE INTERVENTION -->
+											<a href="/intervention" id="intervention-nav">
+												INTERVENTION
+											</a>
+										</li>
+									<% end %>
+									<li><!-- LOGIN -->
+										<a href=<%= new_user_session_path %> id="contact-nav">
+											LOGIN
+										</a>
+									</li>
+									<% if user_signed_in? %>
+										<li><!-- BACK OFFICE -->
+											<a href="/admin" id="contact-nav">
+												Back Office
+											</a>
+										</li>
+									<% end %>
+								</ul>
+
+							</nav>
+						</div>
+
+					</div>
+				</header>
+				<!-- /Top Nav -->
+
+
+		
+
+
+					<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+
+
+							<hr />
+
+							<p>
+								<span class="block fw-300">
+									
+								</span>
+								<span class="block fw-300">
+									
+								</span>
+								<span class="block fw-300">
+									
+								</span>
+							</p>
+
+							<ul class="list-unstyled list-icons">
+								<li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 418-725 Boulevard Lebourgneuf, Québec, QC G2J 0C4, Canada</li>
+								<li><i class="fa fa-phone"></i> <strong>Phone:</strong> <a href="tel:(418) 555-1234">(418) 555-1234</a></li>
+								<li><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:info@codeboxx.biz">info@codeboxx.biz</a></li>
+							</ul>
+
+
+					
+
+						</div>
+
+
+
+
+				</div>
+			</section>
+
+
+
+
+
+			<!-- FOOTER -->
+			<footer id="footer">
+				<div class="container">
+
+
+					<div class="row">
+
+						<!-- col #1 -->
+						<div class="col-md-8">
+
+							<h3 class="letter-spacing-1">WHY US?</h3>
+
+							<!-- Small Description -->
+							<p>
+								We have the conviction that we create the most innovative and reliable products on the market. Contact us today for any questions you might have.
+							</p>
+							<h2>(418) 555-1234</h2>
+						</div>
+						<!-- /col #1 -->
+
+						<!-- col #2 -->
+						<div class="col-md-4">
+							<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+							<!-- Newsletter Form -->
+							<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+							<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+									<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+									<span class="input-group-btn">
+										<button class="btn btn-success" type="submit" disabled>Subscribe</button>
+									</span>
+								</div>
+							</form>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+				<div class="copyright">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a href="#">Terms &amp; Conditions</a></li>
+							<li>&bull;</li>
+							<li><a href="#">Privacy</a></li>
+						</ul>
+						&copy; All Rights Reserved, Company LTD
+					</div>
+				</div>
+
+			</footer>
+							<!-- /Newsletter Form -->
+
+
+						</div>
+						<!-- /col #2 -->
+
+					</div>
+
+
+				</div>
+
+				
+
+			</footer>
+			<!-- /FOOTER -->
+
+
+		</div>
+		<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>
+
+		<script src="<%= asset_path 'quote' %>"></script>
+		<!-- JAVASCRIPT FILES 
+		<script>var plugin_path = 'assets/plugins/';</script>
+		<script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
+		<script src="quote.js"></script>
+
+		<script src="assets/js/scripts.js"></script>
+
+		<!- PAGE LEVEL SCRIPTS ->
+		<script src="assets/js/view/pack_hotel.js"></script>

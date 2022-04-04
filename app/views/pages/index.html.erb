@@ -61,6 +61,13 @@
 									CONTACT
 								</a>
 							</li>
+								<% if user_signed_in? %>
+										<li><!-- BACK OFFICE INTERVENTION -->
+											<a href="/intervention" id="intervention-nav">
+												INTERVENTION
+											</a>
+										</li>
+									<% end %>
 							<li><!-- LOGIN -->
 								<a href=<%= new_user_session_path %> id="contact-nav">
 									LOGIN

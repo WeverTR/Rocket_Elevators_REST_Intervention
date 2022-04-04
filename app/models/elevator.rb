@@ -1,6 +1,7 @@
 class Elevator < ApplicationRecord
     include ActiveModel::Dirty
     belongs_to :column
+    has_many :interventions
 
     after_update :send_sms
     # require 'twilio-ruby'

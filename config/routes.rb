@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post '/quote', to: 'quotes#create'
 
 
+
   post '/lead', to: 'leads#create'
 
   #route to home page, commercial,residential, and quote
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
   get '/residential', to: 'pages#residential'
   get '/commercial', to: 'pages#commercial'
   get '/quote', to: 'pages#quote'
+  get '/intervention', to: 'pages#intervention'
   get '/index', to: 'pages#index'
   # get '/admin/graph', to: redirect('/blazer')
   get '/polly', to: 'polly#speak', as: :polly
