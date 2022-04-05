@@ -88,10 +88,10 @@
 											CONTACT
 										</a>
 									</li>
-                                    	<% if user_signed_in? %>
+										<% if user_signed_in? %>
 										<li><!-- BACK OFFICE INTERVENTION -->
 											<a href="/intervention" id="contact-nav">
-												INTERVENTION
+												Intervention
 											</a>
 										</li>
 									<% end %>
@@ -173,7 +173,7 @@
 								data-endelementdelay="0.1"
 								data-endspeed="1000"
 								data-endeasing="Power4.easeIn" style="z-index: 10;">
-								Request A Quote Page
+								Interventions
 							</div>
 
 							<div class="tp-caption customin ltl tp-resizeme small_light_white"
@@ -193,6 +193,16 @@
 									Please fill the following form below out so you can get an accurate quote for your project, thank you!
 								</span>
 							</div>
+                            <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                        </div>
 
 						</li>
 
@@ -205,29 +215,80 @@
 
 
 
-			<section class="b-0">
-				<div class="container">
+			
 
-					<div class="row">
+            <section class="b-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-7 order-lg-2">
+                            <div class="heading-title mt-0">
+                                <h2 class="fs-20 fw-400">Intervention Request Form</h2>
+                            </div>
 
-						<div class="col-lg-7 order-lg-2">
+              
+                    <%= form_with do |form| %>
+
+                        <%# <div class="field" style="display: none;"> %>
+                        <div class="field" >
+                            <%= form.label :Author %>
+                            <%= form.select(:author, Employee.all.collect {|employee| ["#{employee.first_name} #{employee.last_name}"] }.sort_by(&:first), {prompt: "Author"}, {class: 'form-control'}) %>
+                        </div>
+
+                        <div class="form-group" id="Customer">
+                            <%= form.label :Customer %>
+                            <%= form.select(:customer, Customer.all.collect {|customer| [customer.company_name, customer.id.to_i ]}.sort_by(&:first), {prompt: "Customer"}, {class: 'form-control'}) %>
+                        </div>
+                                         
+                        <div class="form-group" id="building">
+                            <%= form.label :Building %>
+                            <%= form.select(:building, Building.all.collect {|building| [building.id, building.customer_id ]}, {prompt: "Building"}, {class: 'form-control'}) %>
+                        </div>
+
+                        <div class="form-group" id="battery">
+                            <%= form.label :Battery %>
+                            <%= form.select(:battery, Battery.all.collect {|battery| [battery.id, battery.building_id ]}, {prompt: "Battery"}, {class: 'form-control'}) %>
+                        </div>
+
+                        <div class="form-group" id="column">
+                            <%= form.label :Column %>
+                            <%= form.select(:column, Column.all.collect {|column| [column.id, column.battery_id ]}, {prompt: "Column"}, {class: 'form-control'}) %>
+                        </div>
+                        <div class="form-group" id="elevator">
+                            <%= form.label :Elevator %>
+                            <%= form.select(:elevator, Elevator.all.collect {|elevator| [elevator.id, elevator.column_id ]}, {prompt: "Elevator"}, {class: 'form-control'}) %>
+                        </div>
+                        
+
+                </div>
+            </section>
+                        <% end %>                     
 							
-							<div class="heading-title mt-0">
-								<h2 class="fs-20 fw-400">Quote Form</h2>
-							</div>
+					  
+                      
+                           
+    
 
 
-					<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
-</div>
+				
 
+
+						<%# <div class="col-lg-5 order-lg-1">
+							<!-- 
+							Available heights
+								h-100
+								h-150
+								h-200
+								h-250
+								h-300
+								h-350
+								h-400
+								h-450
+								h-500
+								h-550
+								h-600
+							-->
+							<div id="map2"><div class="mapouter"><div class="gmap_canvas"><iframe width="400" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=418-725%20Boulevard%20Lebourgneuf,%20Qu%C3%A9bec,%20QC%20G2J%200C4,%20Canada&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies-online.net"></a><br><style>.mapouter{position:relative;text-align:right;height:400px;width:400px;}</style><a href="https://www.embedgooglemap.net">map embed iframe</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:400px;}</style></div></div>
+						</div> %>
 
 							<hr />
 
@@ -250,7 +311,30 @@
 							</ul>
 
 
-					
+							<%# <div class="relative clearfix">
+								<!-- social icons -->
+								<a href="#" class="social-icon social-icon-border social-icon-sm social-icon-transparent float-left social-facebook" data-toggle="tooltip" data-placement="top" title="Facebook">
+									<i class="icon-facebook"></i>
+									<i class="icon-facebook"></i>
+								</a>
+								<a href="#" class="social-icon social-icon-border social-icon-sm social-icon-transparent  float-left social-twitter" data-toggle="tooltip" data-placement="top" title="Twitter">
+									<i class="icon-twitter"></i>
+									<i class="icon-twitter"></i>
+								</a>
+								<a href="#" class="social-icon social-icon-border social-icon-sm social-icon-transparent float-left social-instagram" data-toggle="tooltip" data-placement="top" title="Instagram">
+									<i class="icon-instagram"></i>
+									<i class="icon-instagram"></i>
+								</a>
+								<a href="#" class="social-icon social-icon-border social-icon-sm social-icon-transparent  float-left social-gplus" data-toggle="tooltip" data-placement="top" title="Google Plus">
+									<i class="icon-google-plus"></i>
+									<i class="icon-google-plus"></i>
+								</a>
+								<a href="#" class="social-icon social-icon-border social-icon-sm social-icon-transparent float-left social-pinterest" data-toggle="tooltip" data-placement="top" title="IPiterest">
+									<i class="icon-pinterest"></i>
+									<i class="icon-pinterest"></i>
+								</a>
+							</div> %>
+
 
 						</div>
 
@@ -349,7 +433,7 @@
 		<!-- SCROLL TO TOP -->
 		<a href="#" id="toTop"></a>
 
-		<script src="<%= asset_path 'quote' %>"></script>
+		<%# <script src="<%= asset_path 'intervention' %>"></script> %>
 		<!-- JAVASCRIPT FILES 
 		<script>var plugin_path = 'assets/plugins/';</script>
 		<script src="assets/plugins/jquery/jquery-3.3.1.min.js"></script>
@@ -359,3 +443,4 @@
 
 		<!- PAGE LEVEL SCRIPTS ->
 		<script src="assets/js/view/pack_hotel.js"></script>
+    
