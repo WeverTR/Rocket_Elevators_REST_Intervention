@@ -1,0 +1,20 @@
+<div class="row no-gutters wow slideInUp" data-wow-duration="1s">
+  <div class="col-md-12 home-form">
+    <form class="form-inline">
+      <select class="custom-select mb-0 mr-sm-0 mb-sm-0">
+        <option selected>Location</option>
+        <%= @interventions.each do |intervention| %>
+                <option value="<%= intervention.id %>"><%= intervention.header %></option>
+        <% end %>
+      </select>
+
+      <select class="custom-select mb-0 mr-sm-0 mb-sm-0">
+        <option selected>Customer</option>
+        <%= @customers.each do |customer| %>
+                <option value="<%= customer.id %>"><%= customer.company_contact_name %></option>
+        <% end %>
+      </select>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>

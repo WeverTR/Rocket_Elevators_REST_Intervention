@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   # get 'quotes_controller/create'
   post '/quote', to: 'quotes#create'
 
+  get 'get_interventions_by_customer/:customer_id', to: 'interventions#get_interventions_by_customer'  
+  get '/intervention_search' => 'interventions#intervention_search'
 
 
   post '/lead', to: 'leads#create'
@@ -21,7 +23,6 @@ Rails.application.routes.draw do
   get '/residential', to: 'pages#residential'
   get '/commercial', to: 'pages#commercial'
   get '/quote', to: 'pages#quote'
-  get '/intervention', to: 'pages#intervention'
   get '/index', to: 'pages#index'
   # get '/admin/graph', to: redirect('/blazer')
   get '/polly', to: 'polly#speak', as: :polly

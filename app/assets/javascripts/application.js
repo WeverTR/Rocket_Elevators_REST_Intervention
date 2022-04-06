@@ -12,9 +12,7 @@
 //
 
 //= require popper
-//= require rails-ujs
 //= require jquery
-//= require jquery_ujs
 //= require jquery.form.min
 //= require jquery.validation.min
 //= require jquery.mixitup.min
