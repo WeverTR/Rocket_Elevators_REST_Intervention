@@ -6,7 +6,7 @@
 server "35.183.131.50", user: "ubuntu", roles: %w{app db web}
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-app = ENV['App_URL']
+app = "https://github.com/WeverTR/Rocket_Elevators_REST_Intervention/tree/main"
 if app.nil? or app.empty?
   app = "wevertr" 
 end
