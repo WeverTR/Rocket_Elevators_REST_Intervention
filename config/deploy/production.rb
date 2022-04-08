@@ -6,9 +6,9 @@
 server "35.183.131.50", user: "ubuntu", roles: %w{app db web}
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-app = "https://github.com/WeverTR/Rocket_Elevators_REST_Intervention/tree/main"
+app = ENV['App_URL']
 if app.nil? or app.empty?
-  app = "wevertr" 
+  app = "TroyWever" 
 end
 set :branch, proc { `git rev-parse --abbrev-ref main`.chomp }
 set :application, app
