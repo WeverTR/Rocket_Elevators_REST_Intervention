@@ -6,9 +6,9 @@
 server "35.183.131.50", user: "ubuntu", roles: %w{app db web}
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
-app = ENV['APP']
+app = ENV['App_URL']
 if app.nil? or app.empty?
-  app = "BrooksKloppenburg" 
+  app = "wevertr" 
 end
 set :branch, proc { `git rev-parse --abbrev-ref main`.chomp }
 set :application, app
