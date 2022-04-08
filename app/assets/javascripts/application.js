@@ -30,3 +30,4 @@
 //= require pack_hotel
 //= require smoothscroll
 //= require owl.carousel.min
+//= require interventions.js

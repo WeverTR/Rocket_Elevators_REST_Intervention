@@ -1,0 +1,205 @@
+<div id="wrapper">
+	<div id="header" class="navbar-toggleable-md sticky header-md clearfix">
+
+		<!-- TOP NAV -->
+		<header id="topNav">
+			<div class="container">
+
+				<!-- Mobile Menu Button -->
+				<button class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+					<i class="fa fa-bars"></i>
+				</button>
+
+				<!-- Logo -->
+				<a class="logo float-left scrollTo" href="#top">
+					<%= image_tag 'R2.png', alt:"R2" %>
+				</a>
+
+				<!-- 
+					Top Nav 
+					
+					AVAILABLE CLASSES:
+					submenu-dark = dark sub menu
+				-->
+				<div class="navbar-collapse collapse float-right nav-main-collapse submenu-dark">
+					<nav class="nav-main">
+
+						<!-- 
+							.nav-onepage
+							Required for onepage navigation links
+							
+							Add .external for an external link!
+						-->
+						<ul id="topMain" class="nav nav-pills nav-main nav-onepage">
+							<li class="active"><!-- HOME -->
+								<a href="#home" id="home-nav">
+									HOME
+								</a>
+							</li>
+							<li><!-- SERVICES -->
+								<a href="#services" id="services-nav">
+									SERVICES
+								</a>
+							</li>
+							<li><!-- WORK -->
+								<a href="#portfolio" id="portfolio-nav">
+									PORTFOLIO
+								</a>
+							</li>
+							<li><!-- NEWS -->
+								<a href="#news" id="news-nav">
+									NEWS
+								</a>
+							</li>
+							<li><!-- CLIENTS -->
+								<a href="#clients" id="clients-nav">
+									CLIENTS
+								</a>
+							</li>
+							<li><!-- CONTACT -->
+								<a href="#contact" id="contact-nav">
+									CONTACT
+								</a>
+							</li>
+								<% if user_signed_in? %>
+										<li><!-- BACK OFFICE INTERVENTION -->
+											<a href="/intervention_search" id="intervention-nav">
+												INTERVENTION
+											</a>
+										</li>
+									<% end %>
+							<% if user_signed_in? %>
+								<li><!-- LOGOUT -->
+									<a href=<%= destroy_user_session_path %> id="contact-nav">
+									LOGOUT
+									</a>
+								</li>
+								<% else %>
+								<li><!-- LOGIN -->
+									<a href=<%= new_user_session_path %> id="contact-nav">
+									LOGIN
+									</a>
+								</li>
+							<% end %>
+							<% if user_signed_in? %>
+								<li><!-- BACK OFFICE -->
+									<a href="/admin" id="contact-nav">
+										BACK-OFFICE
+									</a>
+								</li>
+							<% end %>
+						</ul>
+
+					</nav>
+				</div>
+
+			</div>
+		</header>
+		<!-- /Top Nav -->
+
+	</div>
+
+<div class="row" style="margin-top: 50px">
+  <div class="col-md-12 home-form">
+	<h1 style="text-align:center">Submit Intervention Request</h1>
+    <%= form_tag(intervention_search_path, method: "post", class: "form", remote: true) do %>
+	<h4 style="margin-top:25px" >Customer Name</h4>
+    <%= select_tag "customer", options_from_collection_for_select(Customer.all, "id", "company_contact_name"), prompt: "Choose a customer...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+	<h4 style="margin-top:25px" >Building ID</h4>
+    <%= select_tag "building", options_from_collection_for_select(Building.all, "id", "customer_id"), prompt: "Choose a building...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+	<h4 style="margin-top:25px" >Battery ID</h4>
+    <%= select_tag "battery", options_from_collection_for_select(Battery.all, "id", "building_id"), prompt: "Choose a battery...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+	<h4 style="margin-top:25px" >Column ID</h4>
+    <%= select_tag "column", options_from_collection_for_select(Column.all, "id", "battery_id"), prompt: "Choose a column...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+	<h4 style="margin-top:25px" >Elevator ID</h4>
+    <%= select_tag "elevator", options_from_collection_for_select(Elevator.all, "id", "column_id"), prompt: "Choose an elevator...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+	<h4 style="margin-top:25px" >Employee Name</h4>
+    <%= select_tag "employee", options_from_collection_for_select(Employee.all, "id", "first_name"), prompt: "Choose an employee...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <div class="col-md-12">
+        <label for="intervention:report">Description *</label>
+        <textarea required maxlength="10000" rows="8" class="form-control" name="report" id="report"></textarea>
+    </div>
+
+    <%= submit_tag("Submit", class: "btn btn-primary") %>
+<% end %>
+  </div>
+</div>
+
+<!-- FOOTER -->
+	<footer id="footer">
+		<div class="container">
+
+
+			<div class="row">
+
+				<!-- col #1 -->
+				<div class="col-md-8">
+
+					<h3 class="letter-spacing-1">WHY US?</h3>
+
+					<!-- Small Description -->
+					<p>
+						We have the conviction that we create the most innovative and reliable products on the market. Contact us today for any questions you might have.
+					</p>
+					<h2>(418) 555-1234</h2>
+				</div>
+				<!-- /col #1 -->
+
+				<!-- col #2 -->
+				<div class="col-md-4">
+					<h3 class="letter-spacing-1">KEEP IN TOUCH</h3>
+
+					<!-- Newsletter Form -->
+					<p>Subscribe to Our Newsletter to get Important News & Offers</p>
+
+					<form class="validate" action="php/newsletter.php" method="post" data-success="Subscribed! Thank you!" data-toastr-position="bottom-right">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+							<input type="email" id="email" name="email" class="form-control required" placeholder="Enter your Email">
+							<span class="input-group-btn">
+								<button class="btn btn-success" type="submit" disabled>Subscribe</button>
+							</span>
+						</div>
+					</form>
+					<!-- /Newsletter Form -->
+
+
+				</div>
+				<!-- /col #2 -->
+
+			</div>
+
+
+		</div>
+		<div class="texttospeech">
+					<div class="container">
+						<ul class="float-right m-0 list-inline mobile-block">
+							<li><a href="/watson">Enable Text to Speech</a></li>
+						</ul>
+					</div>
+				</div>
+
+		<div class="copyright">
+			<div class="container">
+				<ul class="float-right m-0 list-inline mobile-block">
+					<li><a href="#">Terms &amp; Conditions</a></li>
+					<li>&bull;</li>
+					<li><a href="#">Privacy</a></li>
+				</ul>
+				&copy; All Rights Reserved, Rocket Elevators LTD.
+			</div>
+		</div>
+
+
+
+
+
+	</footer>
+	<!-- /FOOTER -->
+
+</div>
+<!-- /wrapper -->
+
+
+		<!-- SCROLL TO TOP -->
+		<a href="#" id="toTop"></a>

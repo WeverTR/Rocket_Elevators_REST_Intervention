@@ -221,7 +221,7 @@ ActiveRecord::Schema.define(version: 2022_04_04_183245) do
     t.datetime "end_date"
     t.string "result"
     t.string "report"
-    t.string "status"
+    t.string "status", default: "Pending"
     t.index ["author_id"], name: "index_interventions_on_author_id"
     t.index ["battery_id"], name: "index_interventions_on_battery_id"
     t.index ["building_id"], name: "index_interventions_on_building_id"

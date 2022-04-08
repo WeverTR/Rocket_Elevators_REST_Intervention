@@ -1,0 +1,5 @@
+<% interventions = Intervention.all %>
+    <% interventions.each do |intervention| %>
+    <%= intervention.id %>
+    <hr />
+    <% end %>

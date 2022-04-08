@@ -10,6 +10,6 @@ class AddColumnsToInterventions < ActiveRecord::Migration[5.2]
     add_column :interventions, :end_date, :datetime
     add_column :interventions, :result, :string
     add_column :interventions, :report, :string
-    add_column :interventions, :status, :string
+    add_column :interventions, :status, :string, default: "Pending"
   end
 end
