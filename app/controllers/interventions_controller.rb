@@ -1,6 +1,16 @@
 class InterventionsController < ApplicationController
     skip_before_action :verify_authenticity_token
-    before_action :authenticate_user!
+    before_action :authenticate_employee
+
+    def authenticate_employee
+        if user_signed_in?
+            if current_user.employee == nil
+                warden.authenticate!
+            end
+        else
+            warden.authenticate!
+        end
+    end
 
     def get_buildings_by_customer
         @buildings = Building.where("customer_id = ?", params[:customer_id])

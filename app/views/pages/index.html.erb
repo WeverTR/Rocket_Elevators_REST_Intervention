@@ -61,13 +61,13 @@
 									CONTACT
 								</a>
 							</li>
-								<% if user_signed_in? %>
+								<% if user_signed_in? && current_user.employee != nil %>
 										<li><!-- BACK OFFICE INTERVENTION -->
 											<a href="/intervention_search" id="intervention-nav">
 												INTERVENTION
 											</a>
 										</li>
-									<% end %>
+								<% end %>
 							<% if user_signed_in? %>
 								<li><!-- LOGOUT -->
 									<a href=<%= destroy_user_session_path %> id="contact-nav">
