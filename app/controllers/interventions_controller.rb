@@ -5,10 +5,10 @@ class InterventionsController < ApplicationController
     def authenticate_employee
         if user_signed_in?
             if current_user.employee == nil
-                warden.authenticate!
+                redirect_to "/users/sign_in"
             end
         else
-            warden.authenticate!
+            redirect_to "/users/sign_in"
         end
     end
 
@@ -133,9 +133,9 @@ class InterventionsController < ApplicationController
             "subject": @intervention.report,
             "description": "Requestor #{@intervention.customer.company_contact_name} of #{@intervention.customer.company_name} 
                 (building ID: #{@intervention.building_id}, column ID: #{@intervention.column_id}, 
-                elevator ID: #{@intervention.elevator_id}), assigned to employee #{@intervention.employee.first_name} 
-                #{@intervention.employee.last_name}, with the description: #{@intervention.report}"
-        }.to_json
+                elevator ID: #{@intervention.elevator_id}), assigned to employee" + (!@intervention.employee.nil? ? @intervention.employee.first_name : "<UNASSIGNED>") + 
+                " with the description: #{@intervention.report}" 
+            }.to_json
 
     freshdesk_api_path = 'api/v2/tickets'
 
