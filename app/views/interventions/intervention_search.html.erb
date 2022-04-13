@@ -198,12 +198,11 @@
   <div class="col-md-12 main-block">
 	<h1 style="text-align:center">Submit Intervention Request</h1>
     <%= form_tag(intervention_search_path, method: "post", class: "form", remote: true) do %>
-	<h4 style="margin-top:25px" >Customer Name</h4>
-    <%= select_tag "customer", options_from_collection_for_select(Customer.all, "id", "company_contact_name"), :required => true, prompt: "Choose a customer...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <%= select_tag "customer", options_from_collection_for_select(Customer.all, "id", "company_contact_name"), :required => true, prompt: "Choose a customer...", class: "custom-select mb-0 mr-sm-0 mb-sm-0", label: "Customer" %>
 	<h4 style="margin-top:25px" >Building ID</h4>
-    <%= select_tag "building", options_from_collection_for_select(Building.all, "id", "customer_id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <%= select_tag "building", options_from_collection_for_select(Building.all, "id", "customer_id"), :required => true, prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
 	<h4 style="margin-top:25px" >Battery ID</h4>
-    <%= select_tag "battery", options_from_collection_for_select(Battery.all, "id", "building_id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <%= select_tag "battery", options_from_collection_for_select(Battery.all, "id", "building_id"), :required => true, prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
 	<h4 style="margin-top:25px" >Column ID</h4>
     <%= select_tag "column", options_from_collection_for_select(Column.all, "id", "battery_id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
 	<h4 style="margin-top:25px" >Elevator ID</h4>
