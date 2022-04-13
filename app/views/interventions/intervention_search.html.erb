@@ -201,15 +201,15 @@
 	<h4 style="margin-top:25px" >Customer Name</h4>
     <%= select_tag "customer", options_from_collection_for_select(Customer.all, "id", "company_contact_name"), :required => true, prompt: "Choose a customer...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
 	<h4 style="margin-top:25px" >Building ID</h4>
-    <%= select_tag "building", options_from_collection_for_select(Building.all, "id", "customer_id"), prompt: "Choose a building...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <%= select_tag "building", options_from_collection_for_select(Building.all, "id", "customer_id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
 	<h4 style="margin-top:25px" >Battery ID</h4>
-    <%= select_tag "battery", options_from_collection_for_select(Battery.all, "id", "building_id"), prompt: "Choose a battery...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <%= select_tag "battery", options_from_collection_for_select(Battery.all, "id", "building_id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
 	<h4 style="margin-top:25px" >Column ID</h4>
-    <%= select_tag "column", options_from_collection_for_select(Column.all, "id", "battery_id"), prompt: "Choose a column...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <%= select_tag "column", options_from_collection_for_select(Column.all, "id", "battery_id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
 	<h4 style="margin-top:25px" >Elevator ID</h4>
-    <%= select_tag "elevator", options_from_collection_for_select(Elevator.all, "id", "column_id"), prompt: "Choose an elevator...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <%= select_tag "elevator", options_from_collection_for_select(Elevator.all, "id", "column_id"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
 	<h4 style="margin-top:25px" >Employee Name</h4>
-    <%= select_tag "employee", options_from_collection_for_select(Employee.all, "id", "first_name"), prompt: "Choose an employee...", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
+    <%= select_tag "employee", options_from_collection_for_select(Employee.all, "id", "first_name"), prompt: "None", class: "custom-select mb-0 mr-sm-0 mb-sm-0" %>
     <div class="col-md-12">
         <label for="intervention:report">Description *</label>
         <textarea required maxlength="10000" rows="8" class="form-control" name="report" id="report"></textarea>

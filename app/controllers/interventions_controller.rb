@@ -5,9 +5,11 @@ class InterventionsController < ApplicationController
     def authenticate_employee
         if user_signed_in?
             if current_user.employee == nil
+                flash[:alert] = "Logged in user is not an employee!"
                 redirect_to "/users/sign_in"
             end
         else
+            flash[:alert] = "Error: only employees can access this endpoint!"
             redirect_to "/users/sign_in"
         end
     end
