@@ -81,7 +81,7 @@
 									</a>
 								</li>
 							<% end %>
-							<% if user_signed_in? %>
+							<% if user_signed_in? && current_user.employee != nil %>
 								<li><!-- BACK OFFICE -->
 									<a href="/admin" id="contact-nav">
 										BACK-OFFICE
