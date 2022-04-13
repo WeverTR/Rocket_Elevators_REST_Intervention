@@ -1,6 +1,6 @@
 require 'aws-sdk'  # In v2: require 'aws-sdk'
 
-class PollyController < ActionController::Base
+class PollyController < ApplicationController
     # helper_method :speak
     def speak
 #  binding.pry
@@ -55,7 +55,8 @@ class PollyController < ActionController::Base
         # and the configuration (region) from the shared configuration file ~/.aws/config
         polly = Aws::Polly::Client.new(
             access_key_id: ENV['aws_access_key_id'],
-            secret_access_key: ENV['aws_secret_access_key']
+            secret_access_key: ENV['aws_secret_access_key'],
+            region: 'us-east-1'
         )
 
         resp = polly.synthesize_speech({
